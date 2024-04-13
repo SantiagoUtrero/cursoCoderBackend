@@ -33,11 +33,20 @@ const addProducts = async (title, description, price, thumbnail, code, stock) =>
     
 }
 
+// Función para obtener todos los productos
+// Leer el archivo JSON que contiene los productos
+// Parsea el JSON obtenido en un array de productos y los asigna en 'products'
+
 const getProducts = async () => {
+    
     const productJson = await fs.promises.readFile(pathFile, 'utf8');
+    
     products = JSON.parse(productJson) || [];
     return products;
 }
+// Función para obtener un producto por su ID
+// Asegurarse de que 'products' esté actualizado
+// Buscar un producto por su ID en el array 'products' y lanzar error si no se encuentra
 
 const getProductById = async (id) => {
     await getProducts();
@@ -51,6 +60,10 @@ const getProductById = async (id) => {
     return product;
 }
 
+// Función para actualizar un producto por su ID
+// Asegurarse de que 'products' esté actualizado
+// Encontrar el índice del producto que se quiere actualizar en el array 'products' por ID
+
 const updateProduct = async (id, dataProduct) => {
     await getProducts();
     const index = products.findIndex(product => product.id === id);
@@ -61,6 +74,10 @@ const updateProduct = async (id, dataProduct) => {
 
     await fs.promises.writeFile(pathFile, JSON.stringify(products));
 }
+// Función para eliminar un producto por su ID
+// Asegurarse de que 'products' este actualizado
+// Filtrar los productos para mantener solo aquellos cuyo ID no coincide con el ID que le dimos
+// Escribir el array de productos filtrado en el archivo JSON
 
 const deleteProduct = async (id) =>{
     await getProducts();
@@ -78,11 +95,22 @@ const deleteProduct = async (id) =>{
 
 //getProducts();
 
+// Se llama a 'getProducts' para obtener la lista de todos los productos 
+
 //getProductById(4);
+
+// Se llama a 'getProductById' para obtener un producto por ID
+
 
 //updateProduct(3, {
     //title: "Producto 3",
     //description: "el tercer producto",
 //});
 
+// Se llama a 'updateProduct' para actualizar un producto por ID
+
+
 deleteProduct(2);
+
+// Se llama a 'deleteProduct' para eliminar un producto por la ID
+// Se  eliminara el producto con ID 2
