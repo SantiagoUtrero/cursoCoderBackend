@@ -1,38 +1,28 @@
 [
     {
-        "id": 1,
-        "title": "producto 1 v2",
-        "description": "el primer producto",
-        "price": 299,
-        "thumbnail": "https://",
-        "code": "AJ912",
-        "stock": 100
+        "id": "10",
+        "title": "modificacion con routes final",
+        "description": "Descripción del producto 2",
+        "price": 10.23,
+        "thumbnail": "https://example/product2.jpg",
+        "code": "P02",
+        "stock": 3
     },
     {
-        "id": 3,
-        "title": "Producto 3 v2",
-        "description": "el tercer producto",
-        "price": 905,
-        "thumbnail": "https://",
-        "code": "AJ914",
-        "stock": 50
+        "id": "ca863e0c37",
+        "title": "modificacion",
+        "code": "p0122",
+        "price": "200"
     },
     {
-        "id": 4,
-        "title": "Producto 5",
-        "description": "el quinto producto",
-        "price": 234,
-        "thumbnail": "https://",
-        "code": "AJ915",
-        "stock": 25
+        "id": "f58f7f61a3",
+        "title": "producto agregado con routes",
+        "price": "20022",
+        "code": "p01212"
     },
     {
-        "id": 5,
-        "title": "Producto 6",
-        "description": "el sexto producto",
-        "price": 100,
-        "thumbnail": "https://",
-        "code": "AJ916",
-        "stock": 12
+        "id": "c3cd679ba8",
+        "title": "modificacion con routes final",
+        "code": "0123910"
     }
 ]
