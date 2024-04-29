@@ -1,7 +1,7 @@
 [
     {
         "id": "10",
-        "title": "modificacion con routes final",
+        "title": "segunda modificacion",
         "description": "Descripción del producto 2",
         "price": 10.23,
         "thumbnail": "https://example/product2.jpg",
@@ -24,5 +24,10 @@
         "id": "c3cd679ba8",
         "title": "modificacion con routes final",
         "code": "0123910"
+    },
+    {
+        "id": "060d5742ff",
+        "title": "creado con routes",
+        "code": "p1234"
     }
 ]
