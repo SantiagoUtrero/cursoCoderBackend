@@ -1,10 +1,17 @@
 import express from "express"
 import routes from "./routes/index.js"
+import handlebars from "express-handlebars";
 
 const app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+//handlebars
+
+app.engine("handlebars", handlebars.engine());
+app.set("views", "./src/views");
+app.set("view engine", "handlebars");
 
 app.use("/api", routes)
 
@@ -16,7 +23,7 @@ app.listen(port, ready)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-//solicitudes
+
 
 app.get("/api", (req, res) => {
     try {
