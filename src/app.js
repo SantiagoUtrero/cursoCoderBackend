@@ -1,6 +1,10 @@
 import express from "express"
 import routes from "./routes/index.js"
 import handlebars from "express-handlebars";
+import { connectMongoDB } from "./config/mongoDb.config.js";
+
+//conexion con la base de datos
+connectMongoDB();
 
 const app = express()
 

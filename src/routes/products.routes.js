@@ -1,46 +1,44 @@
 import { Router } from "express";
-import productFunctions from "../files/products.js"
+import productDao from "../dao/mongoDao/product.dao.js";
 
 const router = Router();
 
-router.post("/", create)
-router.get("/", read)
-router.get("/:pid", readOne)
-router.put("/:pid", update);
-router.delete("/:pid", destroy)
 
-async function read(req, res) {
-
+router.get("/", async (req, res) => {
     try {
-        const all = await productFunctions.getProducts();
-        return res.json({ status: 200, response: all })
+        const products = await productDao.getAll();
+        res.status(200).json({status: "success", payload: products});
     } catch (error) {
         console.log(error);
-        return res.json({ status: 500, response: error.message })
+        res.status(500).json({ status: "error", message: error.message });
     }
-}
+});
+
+router.post("/", create);
+router.get("/:pid", readOne);
+router.put("/:pid", update);
+router.delete("/:pid", destroy);
 
 async function readOne(req, res) {
     try {
         const pid = req.params.pid;
-        const one = await productFunctions.getProductById(pid);
-        return res.json({ status: 200, response: one });
+        const one = await productDao.getById(pid);
+        res.status(200).json({status: "success", payload: one});
     } catch (error) {
         console.log(error);
         return res.status(404).json({ status: 404, response: error.message });
     }
 }
 
-
 async function create(req, res) {
-   try {
-    const data = req.body
-    const one = await productFunctions.addProducts(data)
-    return res.json({ status: 201, response: one})
-   } catch (error) {
-    console.log(error);
+    try {
+        const data = req.body;
+        const newProduct = await productDao.create(data);
+        res.status(201).json({status: "success", payload: newProduct}); 
+    } catch (error) {
+        console.log(error);
         return res.json({ status: 500, response: error.message });
-   }
+    }
 }
 
 async function update(req, res) {
@@ -48,13 +46,13 @@ async function update(req, res) {
         const { pid } = req.params;
         const data = req.body;
 
-        const existingProduct = await productFunctions.getProductById(pid);
+        const existingProduct = await productDao.getById(pid);
+
         if (!existingProduct) {
             return res.status(404).json({ status: 404, response: `Producto con ID ${pid} no encontrado` });
         }
 
-        const updatedProduct = await productFunctions.updateProduct(pid, data);
-
+        const updatedProduct = await productDao.update(pid, data);
         return res.json({ status: 200, response: updatedProduct });
     } catch (error) {
         console.log(error);
@@ -62,22 +60,21 @@ async function update(req, res) {
     }
 }
 
-async function destroy (req, res){
+async function destroy(req, res) {
     try {
-        const { pid } = req.params
-        const one = await productFunctions.getProductById(pid)
+        const { pid } = req.params;
+        const one = await productDao.getById(pid);
 
-        if (one){
-            await productFunctions.deleteProduct(pid)
-            return res.json({status: 200, response: one})
+        if (one) {
+            await productDao.deleteOne(pid);
+            return res.json({ status: 200, response: one });
         }
-        const error = new Error("Not found")
-        error.status = 404
-        throw error
-
+        const error = new Error("Not found");
+        error.status = 404;
+        throw error;
     } catch (error) {
         console.log(error);
-        return res.json({ status: 500, response: error.message })
+        return res.json({ status: 500, response: error.message });
     }
 }
 
