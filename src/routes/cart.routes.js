@@ -1,12 +1,12 @@
 import { Router } from "express";
-import cartManager from "../dao/fsManagers/cartManager.js";
+import cartDao from "../dao/mongoDao/cart.dao.js";
 
 const router = Router();
 
 router.post("/", async (req,res) => {
     try {
-        const cart =  cartManager.createCart();
-        res.status(201).json(cart)
+        const cart =  cartDao.create();
+        res.status(201).json({status: "success", payload: cart})
 
     } catch (error) {
         console.error("Error creating cart:", error);
@@ -16,24 +16,27 @@ router.post("/", async (req,res) => {
 router.get("/:cid", async (req,res) => {
     try {
         const {cid} = req.params
-        const cart = await cartManager.getCartById(cid)
-
-        res.status(200).json(cart)
+        const cart = await cartDao.getById(cid)
+        if(!cart) return res.status(404).json({ status: "error", msg: `No se encontro el carrito ${cid}`})
+        res.status(200).json({status: "success", payload: cart})
         
     } catch (error) {
         console.log(error)
     }
 })
-router.post("/:cid/products/:pid", async (req,res) => {
+router.post("/:cid/products/:pid", async (req, res) => {
     try {
-        const {cid, pid} = req.params
-        const cart = await cartManager.addProductToCart(cid, pid)
+        const { cid, pid } = req.params;
+        const result = await cartDao.addProductToCart(cid, pid);
 
-        res.status(200).json(cart)
-        
+        if (!result.product) return res.status(404).json({ status: "error", msg: `No se encontró el producto ${pid}` });
+        if (!result.cart) return res.status(404).json({ status: "error", msg: `No se encontró el carrito ${cid}` });
+
+        res.status(200).json({ status: "success", payload: result.cart });
     } catch (error) {
-        console.log(error)
+        console.error("Error adding product to cart:", error);
+        res.status(500).json({ status: "error", message: "Internal Server Error" });
     }
-})
+});
 
 export default router;
