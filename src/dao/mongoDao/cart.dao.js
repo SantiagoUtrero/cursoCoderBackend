@@ -19,7 +19,14 @@ const addProductToCart = async (cid, pid) => {
         const cart = await cartModel.findById(cid);
         if (!cart) return { product: true, cart: false };
 
-        cart.products.push(product);
+        
+        const productInCart = cart.products.find(p => p.product.toString() === pid);
+        if (productInCart) {
+            productInCart.quantity += 1;
+        } else {
+            cart.products.push({ product: pid, quantity: 1 });
+        }
+
         await cart.save();
 
         return { product: true, cart: cart };
@@ -29,7 +36,32 @@ const addProductToCart = async (cid, pid) => {
     }
 };
 
+const deleteProductInCart = async (cid, pid) => {
+    try {
+        const product = await productModel.findById(pid);
+        if (!product) return { product: false, cart: null };
+
+        const cart = await cartModel.findById(cid);
+        if (!cart) return { product: true, cart: false };
+
+        const productInCart = cart.products.find(p => p.product.toString() === pid);
+        if (productInCart) {
+            productInCart.quantity -= 1;
+            if (productInCart.quantity <= 0) {
+                cart.products = cart.products.filter(p => p.product.toString() !== pid);
+            }
+            await cart.save();
+            return { product: true, cart: cart };
+        } else {
+            return { product: false, cart: true };
+        }
+    } catch (error) {
+        console.error("Error eliminando producto del carrito:", error);
+        throw error;
+    }
+};
 export default {
     getById,
     create,
-    addProductToCart}
+    addProductToCart,
+    deleteProductInCart}

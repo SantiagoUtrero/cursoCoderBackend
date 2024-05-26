@@ -39,4 +39,23 @@ router.post("/:cid/products/:pid", async (req, res) => {
     }
 });
 
+router.delete("/:cid/products/:pid", async (req, res) => {
+    try {
+        const { cid, pid } = req.params;
+        const result = await cartDao.deleteProductInCart(cid, pid);
+
+        if (!result.product) {
+            return res.status(404).json({ status: "error", msg: `No se encontró el producto con el id ${pid}` });
+        }
+        if (!result.cart) {
+            return res.status(404).json({ status: "error", msg: `No se encontró el carrito con el id ${cid}` });
+        }
+
+        res.status(200).json({ status: "success", payload: result.cart });
+    } catch (error) {
+        console.error("Error deleting product from cart:", error);
+        res.status(500).json({ status: "error", message: "Internal Server Error" });
+    }
+});
+
 export default router;
