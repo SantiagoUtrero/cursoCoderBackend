@@ -2,6 +2,8 @@ import express from "express"
 import routes from "./routes/index.js"
 import handlebars from "express-handlebars";
 import { connectMongoDB } from "./config/mongoDb.config.js";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 
 //conexion con la base de datos
 connectMongoDB();
@@ -10,6 +12,16 @@ const app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: "mongodb+srv://admin:123junio@e-commerce1.hwuxqrg.mongodb.net/ecommerce",
+        ttl: 15
+    }),
+    secret: "CodigoSecreto",
+    resave: true
+
+}))
+
 
 //handlebars
 
