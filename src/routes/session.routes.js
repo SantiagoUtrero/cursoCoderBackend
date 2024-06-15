@@ -1,48 +1,23 @@
 import { Router } from "express";
 import userDao from "../dao/mongoDao/user.dao.js";
+import createHash, { isValidPassword } from "../utils/hasPassword.js";
+import passport from "passport";
 
 const router = Router();
 
-router.post("/register", async (req, res) => {
+router.post("/register", passport.authenticate("register") ,async (req, res) => {
   try {
-    const userData = req.body;
-    const newUser = await userDao.create(userData);
-    if (!newUser) return res.status(400).json({status: "error ", msg: "no se pudo crear el usuario"}) 
-
-    res.status(201).json({status: "Success", payload: newUser})
+    res.status(201).json({status: "Success", msg: "User creation successfully"})
   } catch (error) {
     console.log(error)
     res.status(500).json({status: "Error", msg: "Internal server issue"})
   }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", passport.authenticate("login"), async (req, res) => {
   try {
-    const {email, password } = req.body;
 
-    // si es admin
-    
-
-    if(email === "adminCoder@coder.com" && password === "adminCoder"){
-      req.session.user = {
-        email,
-        role: "admin"
-      }
-     return res.status(200).json({status: "Success", payload: req.session.user})
-    }
-    // si no es admin
-
-    const user = await userDao.getByEmail(email);
-    if(!user || user.password !==  password){
-      return res.status(401).json({status: "error ", msg: "Email o password incorrectos"});
-    }
-
-    req.session.user ={
-      email,
-      role: user
-    }
-
-    return res.status(200).json({status: "Success", payload: req.session.user})
+    return res.status(200).json({status: "Success", payload: req.user})
 
   } catch (error) {
     console.log(error)
@@ -50,5 +25,14 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/logout", async (req,res) => {
+  try {
+    req.session.destroy();
+    return res.status(200).json({status: "Success", msg: "Logout successful"})
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({status: "Error", msg: "Internal server issue"})
+  }
+})
 
 export default router;

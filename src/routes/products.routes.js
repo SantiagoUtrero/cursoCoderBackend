@@ -1,10 +1,11 @@
 import { Router } from "express";
 import productDao from "../dao/mongoDao/product.dao.js";
+import { isLogin } from "../middleware/isLogin.middleware.js";
 
 const router = Router();
 
 
-router.get("/", async (req, res) => {
+router.get("/", isLogin, async (req, res) => {
     try {
         const { limit, page, sort, category, status } = req.query;
         const options = {
