@@ -1,9 +1,10 @@
 import { Router } from "express";
 import cartDao from "../dao/mongoDao/cart.dao.js";
+import { passportCall, authorization } from "../middleware/passport.middleware.js";
 
 const router = Router();
 
-router.post("/", async (req,res) => {
+router.post("/", authorization("user"), async (req,res) => {
     try {
         const cart =  cartDao.create();
         res.status(201).json({status: "success", payload: cart})
@@ -13,7 +14,7 @@ router.post("/", async (req,res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 })
-router.get("/:cid", async (req,res) => {
+router.get("/:cid", passportCall("jwt"), authorization("user"), async (req,res) => {
     try {
         const {cid} = req.params
         const cart = await cartDao.getById(cid)
@@ -24,7 +25,7 @@ router.get("/:cid", async (req,res) => {
         console.log(error)
     }
 })
-router.post("/:cid/products/:pid", async (req, res) => {
+router.post("/:cid/products/:pid", passportCall("jwt"), authorization("user"), async (req, res) => {
     try {
         const { cid, pid } = req.params;
         const result = await cartDao.addProductToCart(cid, pid);
@@ -39,7 +40,7 @@ router.post("/:cid/products/:pid", async (req, res) => {
     }
 });
 
-router.delete("/:cid/products/:pid", async (req, res) => {
+router.delete("/:cid/products/:pid", passportCall("jwt"), authorization("user"), async (req, res) => {
     try {
         const { cid, pid } = req.params;
         const result = await cartDao.deleteProductInCart(cid, pid);

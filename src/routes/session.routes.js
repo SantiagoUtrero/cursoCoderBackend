@@ -4,6 +4,7 @@ import createHash, { isValidPassword } from "../utils/hasPassword.js";
 import passport from "passport";
 import { createToken, verifyToken } from "../utils/jwt.js";
 import { authorization, passportCall } from "../middleware/passport.middleware.js";
+import { userLoginValidator } from "../validators/userLogin.validator.js";
 
 const router = Router();
 
@@ -27,7 +28,7 @@ router.post("/login", passport.authenticate("login"), async (req, res) => {
   }
 });
 
-router.post("/jwt", async (req, res) => {
+router.post("/jwt", userLoginValidator, async (req, res) => {
   try {
 
     const {email, password } = req.body;

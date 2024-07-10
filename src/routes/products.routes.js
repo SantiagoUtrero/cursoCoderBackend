@@ -1,11 +1,11 @@
 import { Router } from "express";
 import productDao from "../dao/mongoDao/product.dao.js";
-import { isLogin } from "../middleware/isLogin.middleware.js";
+import { authorization, passportCall } from "../middleware/passport.middleware.js";
 
 const router = Router();
 
 
-router.get("/", isLogin, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const { limit, page, sort, category, status } = req.query;
         const options = {
@@ -37,10 +37,10 @@ router.get("/", isLogin, async (req, res) => {
     }
 });
 
-router.post("/", create);
+router.post("/", passportCall("jwt"), authorization("admin"), create);
 router.get("/:pid", readOne);
-router.put("/:pid", update);
-router.delete("/:pid", destroy);
+router.put("/:pid", passportCall("jwt"), authorization("admin"), update);
+router.delete("/:pid", passportCall("jwt"), authorization("admin"), destroy);
 
 async function readOne(req, res) {
     try {
