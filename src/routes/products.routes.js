@@ -1,6 +1,7 @@
 import { Router } from "express";
 import productDao from "../dao/mongoDao/product.dao.js";
 import { authorization, passportCall } from "../middleware/passport.middleware.js";
+import { productDataValidator } from "../validators/produtctDara.validator.js";
 
 const router = Router();
 
@@ -37,7 +38,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.post("/", passportCall("jwt"), authorization("admin"), create);
+router.post("/", passportCall("jwt"), authorization("admin"), productDataValidator, create);
 router.get("/:pid", readOne);
 router.put("/:pid", passportCall("jwt"), authorization("admin"), update);
 router.delete("/:pid", passportCall("jwt"), authorization("admin"), destroy);
