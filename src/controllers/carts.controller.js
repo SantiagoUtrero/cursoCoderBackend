@@ -1,4 +1,4 @@
-import cartDao from "../dao/mongoDao/cart.dao.js";
+
 import cartsServices from "../services/carts.services.js";
 
 const createCart = async (req,res) => {
@@ -29,7 +29,6 @@ const getById = async (req,res) => {
     try {
         const {cid} = req.params
         const cart = await cartsServices.getById(cid)
-        if(!cart) return res.status(404).json({ status: "error", msg: `No se encontro el carrito ${cid}`})
         res.status(200).json({status: "success", payload: cart})
         
     } catch (error) {
@@ -39,14 +38,7 @@ const getById = async (req,res) => {
 const deleteProductInCart = async (req, res) => {
     try {
         const { cid, pid } = req.params;
-        const result = await cartDao.deleteProductInCart(cid, pid);
-
-        if (!result.product) {
-            return res.status(404).json({ status: "error", msg: `No se encontró el producto con el id ${pid}` });
-        }
-        if (!result.cart) {
-            return res.status(404).json({ status: "error", msg: `No se encontró el carrito con el id ${cid}` });
-        }
+        const result = await cartsServices.deleteProductInCart(cid, pid);
 
         res.status(200).json({ status: "success", payload: result.cart });
     } catch (error) {

@@ -1,34 +1,20 @@
-
-import cartDao from "../dao/mongoDao/cart.dao.js"
-import productDao from "../dao/mongoDao/product.dao.js";
+import cartsRepository from "../persistences/repositories/carts.repository.js";
 
 const createCart = async (req,res) => {
-   return await cartDao.create();
+   return await cartsRepository.create();
 }
 const addProductToCart = async (cid, pid) => {
-    const product = await productDao.getById(pid);
-    if (!product) return { product: false, cart: null };
 
-    const cart = await cartDao.getById(cid);
-    if (!cart) return { product: true, cart: false };
-
-    
-    const productInCart = cart.products.find(p => p.product.toString() === pid);
-    if (productInCart) {
-        productInCart.quantity += 1;
-    } else {
-        cart.products.push({ product: pid, quantity: 1 });
-    }
-
-    await cart.save();
-
-    return { product: true, cart: cart };
+ const cart = await cartsRepository.addProductToCart(cid, pid);
+ return cart;
     
 }
 const getById = async (id) => {
-    return await cartDao.getById(id)
+    return await cartsRepository.getById(id)
 }
+
 const deleteProductInCart = async (cid, pid) => {
+    return await cartsRepository.deleteProductInCart(cid, pid);
 }
 
 export default {
