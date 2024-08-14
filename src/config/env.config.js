@@ -14,4 +14,8 @@ export default {
     CODE_SECRET: process.env.CODE_SECRET,
     GOOGLE_CLIENT: process.env.GOOGLE_CLIENT,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+    GMAIL_PASS: process.env.GMAIL_PASS,
+    TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
+    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
+    TWILIO_SMS_NUMBER: process.env.TWILIO_SMS_NUMBER
 };

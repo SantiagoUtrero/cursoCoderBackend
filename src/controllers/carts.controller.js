@@ -46,10 +46,22 @@ const deleteProductInCart = async (req, res) => {
         res.status(500).json({ status: "error", message: "Internal Server Error" });
     }
 }
+const purchaseCart = async (req, res) => {
+  try {
+
+    //TODO llamar al servicio de compra 
+
+  } catch (error) {
+    console.error("Error deleting product from cart:", error);
+    res.status(500).json({ status: "error", message: "Internal Server Error" });
+}
+}
+
 
 export default {
     createCart,
     addProductToCart,
     getById,
-    deleteProductInCart
+    deleteProductInCart,
+    purchaseCart
 }
