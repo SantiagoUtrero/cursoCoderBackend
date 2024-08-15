@@ -4,6 +4,7 @@ import sessionsController from "../controllers/sessions.controller.js";
 import { authorization, passportCall } from "../middleware/passport.middleware.js";
 import { sendMail } from "../utils/sendMails.js";
 import { sendSMS } from "../utils/sendSms.js";
+import { generateUserMocks } from "../mocks/user.mock.js";
 
 
 const router = Router();
@@ -29,8 +30,6 @@ router.get("/sms", async (req, res) => {
 
   res.status(200).json({status: "ok", msg: "sms enviado con exito"})
 })
-
-
 router.get("/email", async (req,res) => {
 
   const {name} = req.body;
@@ -46,5 +45,10 @@ router.get("/email", async (req,res) => {
   res.status(200).json({status: "ok", msg: "email enviado con exito"})
 })
 
+router.get("/usermocks", async (req, res) => {
+  const users = generateUserMocks(5)
+  res.status(200).json({status: "ok", users})
+}
+ )
 
 export default router;
