@@ -8,6 +8,8 @@ import passport from "passport";
 import initializePassport from "./config/passport.config.js";
 import cookieParser from "cookie-parser";
 import envs from './config/env.config.js';
+import { errorHandle } from "./errors/errorHandle.js";
+
 //conexion con la base de datos
 connectMongoDB();
 
@@ -37,6 +39,8 @@ app.set("views", "./src/views");
 app.set("view engine", "handlebars");
 
 app.use("/api", routes)
+
+app.use(errorHandle);
 
 const port = envs.PORT
 const ready = console.log(`server ready on port ${port}`);

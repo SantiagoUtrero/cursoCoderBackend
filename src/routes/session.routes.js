@@ -30,6 +30,7 @@ router.get("/sms", async (req, res) => {
 
   res.status(200).json({status: "ok", msg: "sms enviado con exito"})
 })
+
 router.get("/email", async (req,res) => {
 
   const {name} = req.body;
@@ -48,7 +49,6 @@ router.get("/email", async (req,res) => {
 router.get("/usermocks", async (req, res) => {
   const users = generateUserMocks(5)
   res.status(200).json({status: "ok", users})
-}
- )
+})
 
 export default router;

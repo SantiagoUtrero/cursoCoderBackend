@@ -1,4 +1,5 @@
 import productsRepository from "../persistences/repositories/products.repository.js"
+import error from '../errors/customErrors.js'
 
 
 const getAll = async (query, options) => {
@@ -9,6 +10,7 @@ const getAll = async (query, options) => {
 
 const getById = async (id) => {
   const product = await productsRepository.getById(id);
+  if(!product) throw error.notFoundError(`Product ${id} not found`);
   return product;
 }
 

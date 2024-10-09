@@ -34,14 +34,14 @@ const getAll = async (req, res) => {
     }
 }
 
-const readOne = async (req, res) => {
+const readOne = async (req, res, next) => {
     try {
         const pid = req.params.pid;
         const one = await productsServices.getById(pid);
         res.status(200).json({status: "success", payload: one});
     } catch (error) {
         console.log(error);
-        return res.status(404).json({ status: 404, response: error.message });
+        next(error);
     }
 }
 
