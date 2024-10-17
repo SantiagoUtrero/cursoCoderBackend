@@ -1,0 +1,42 @@
+2024-10-10 21:49:34 info: server ready on port 8080
+2024-10-10 21:49:36 info: MongoDB conectado
+2024-10-10 21:50:32 info: server ready on port 8080
+2024-10-10 21:50:33 info: MongoDB conectado
+2024-10-14 17:04:15 info: server ready on port 8080
+2024-10-14 17:04:15 error: cuidado
+2024-10-14 17:04:16 info: MongoDB conectado
+2024-10-14 17:04:55 info: server ready on port 8080
+2024-10-14 17:04:55 error: cuidado
+2024-10-14 17:04:56 info: MongoDB conectado
+2024-10-14 17:08:56 info: server ready on port 8080
+2024-10-14 17:08:57 info: MongoDB conectado
+2024-10-14 17:15:23 info: server ready on port 8080
+2024-10-14 17:15:24 info: MongoDB conectado
+2024-10-14 17:15:44 info: server ready on port 8080
+2024-10-14 17:15:44 info: MongoDB conectado
+2024-10-14 17:16:31 info: server ready on port 8080
+2024-10-14 17:16:31 info: MongoDB conectado
+2024-10-14 17:16:32 error: Product 66491a46c5cb5d48444da4d6 not found
+2024-10-14 17:17:43 error: Cast to ObjectId failed for value "66491a46c5cb5d48444da4" (type string) at path "_id" for model "products"
+2024-10-14 17:19:47 info: server ready on port 8080
+2024-10-14 17:19:48 info: MongoDB conectado
+2024-10-14 17:20:19 info: server ready on port 8080
+2024-10-14 17:20:20 info: MongoDB conectado
+2024-10-14 17:20:39 info: server ready on port 8080
+2024-10-14 17:20:41 info: MongoDB conectado
+2024-10-14 17:21:01 info: server ready on port 8080
+2024-10-14 17:21:02 info: MongoDB conectado
+2024-10-14 17:21:06 info: server ready on port 8080
+2024-10-14 17:21:07 info: MongoDB conectado
+2024-10-14 17:21:15 error: internal server error
+2024-10-14 17:21:50 info: server ready on port 8080
+2024-10-14 17:21:51 info: MongoDB conectado
+2024-10-14 17:21:51 error: Cast to ObjectId failed for value "66491a46c5cb5d48444da4" (type string) at path "_id" for model "products"
+2024-10-15 23:03:39 info: server ready on port 8080
+2024-10-15 23:03:40 info: MongoDB conectado
+2024-10-15 23:16:12 info: server ready on port 8080
+2024-10-15 23:16:13 info: MongoDB conectado
+2024-10-15 23:18:00 info: server ready on port 8080
+2024-10-15 23:18:01 info: MongoDB conectado
+2024-10-17 16:01:08 info: server ready on port 8080
+2024-10-17 16:01:10 info: MongoDB conectado

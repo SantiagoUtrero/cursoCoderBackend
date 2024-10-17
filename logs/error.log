@@ -1,0 +1,6 @@
+2024-10-14 17:04:15 error: cuidado
+2024-10-14 17:04:55 error: cuidado
+2024-10-14 17:16:32 error: Product 66491a46c5cb5d48444da4d6 not found
+2024-10-14 17:17:43 error: Cast to ObjectId failed for value "66491a46c5cb5d48444da4" (type string) at path "_id" for model "products"
+2024-10-14 17:21:15 error: internal server error
+2024-10-14 17:21:51 error: Cast to ObjectId failed for value "66491a46c5cb5d48444da4" (type string) at path "_id" for model "products"

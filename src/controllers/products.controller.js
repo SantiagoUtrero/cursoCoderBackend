@@ -40,7 +40,6 @@ const readOne = async (req, res, next) => {
         const one = await productsServices.getById(pid);
         res.status(200).json({status: "success", payload: one});
     } catch (error) {
-        console.log(error);
         next(error);
     }
 }

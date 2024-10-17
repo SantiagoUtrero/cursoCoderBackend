@@ -9,6 +9,7 @@ import initializePassport from "./config/passport.config.js";
 import cookieParser from "cookie-parser";
 import envs from './config/env.config.js';
 import { errorHandle } from "./errors/errorHandle.js";
+import { logger } from "./utils/logger.js";
 
 //conexion con la base de datos
 connectMongoDB();
@@ -43,14 +44,13 @@ app.use("/api", routes)
 app.use(errorHandle);
 
 const port = envs.PORT
-const ready = console.log(`server ready on port ${port}`);
+const ready = logger.info(`server ready on port ${port}`);
+
 
 app.listen(port, ready)
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
-
 
 app.get("/api", (req, res) => {
     try {
