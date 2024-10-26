@@ -1,0 +1,95 @@
+paths:
+  /api/products/{pid}:
+    put:  
+      tags:
+        - Products
+      summary: Update by id
+      
+      parameters:
+        - name: pid
+          in: path
+          description: id del producto
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/updateProduct"
+      responses:
+        "200":
+          description: El producto fue modificado sin problemas.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductsById"
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Internal server error.
+
+components:
+  schemas:
+    ProductsById:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: "ID del producto"
+        title:
+          type: string
+        description:
+          type: string
+        thumbnail:
+          type: array
+          items:
+            type: string
+        code:
+          type: string
+        stock:
+          type: integer
+        status:
+          type: boolean
+        price:
+          type: number
+        category:
+          type: string
+        owner:
+          type: string
+      example:
+        _id: "66491a46c5cb5d48444da4d6"
+        title: "producto 1"
+        description: "descripcion de producto 1"
+        thumbnail: ["www.testeo.com"]
+        code: "123AB78"
+        stock: 45
+        price: 50.2
+        category: "autos"
+    updateProduct:
+      type: object
+      properties:
+        title:
+          type: string
+          description: "titulo del producto"
+        description:
+          type: string
+          description: "descripcion del producto"
+        thumbnail:
+          type: array
+          items:
+            type: string
+          description: "imagen del producto"
+        code:
+          type: string
+          description: "codigo del producto"
+        stock:
+          type: integer
+          description: "stock del producto"
+        price:
+          type: number
+          description: "precio del producto"
+        category:
+          type: string
+          description: "categoria del producto"

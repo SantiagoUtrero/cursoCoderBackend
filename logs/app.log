@@ -40,3 +40,110 @@
 2024-10-15 23:18:01 info: MongoDB conectado
 2024-10-17 16:01:08 info: server ready on port 8080
 2024-10-17 16:01:10 info: MongoDB conectado
+2024-10-21 01:44:17 info: server ready on port 8080
+2024-10-21 01:44:18 info: MongoDB conectado
+2024-10-21 01:45:34 info: server ready on port 8080
+2024-10-21 01:45:35 info: MongoDB conectado
+2024-10-21 01:45:59 info: server ready on port 8080
+2024-10-21 01:46:00 info: MongoDB conectado
+2024-10-21 01:50:43 info: server ready on port 8080
+2024-10-21 01:50:44 info: MongoDB conectado
+2024-10-21 01:53:41 info: server ready on port 8080
+2024-10-21 01:53:42 info: MongoDB conectado
+2024-10-21 01:53:50 info: server ready on port 8080
+2024-10-21 01:53:51 info: MongoDB conectado
+2024-10-21 01:54:48 info: server ready on port 8080
+2024-10-21 01:54:49 info: MongoDB conectado
+2024-10-21 01:56:38 info: server ready on port 8080
+2024-10-21 01:56:39 info: MongoDB conectado
+2024-10-21 14:16:25 info: server ready on port 8080
+2024-10-21 14:16:26 info: MongoDB conectado
+2024-10-21 15:50:30 info: server ready on port 8080
+2024-10-21 15:50:31 info: MongoDB conectado
+2024-10-22 16:53:43 info: server ready on port 8080
+2024-10-22 16:53:44 info: MongoDB conectado
+2024-10-23 19:56:36 info: server ready on port 8080
+2024-10-23 19:56:37 info: MongoDB conectado
+2024-10-23 20:27:48 info: server ready on port 8080
+2024-10-23 20:27:49 info: MongoDB conectado
+2024-10-23 20:30:23 info: server ready on port 8080
+2024-10-23 20:30:24 info: MongoDB conectado
+2024-10-23 20:31:03 error: Cast to ObjectId failed for value "adasddasd" (type string) at path "_id" for model "products"
+2024-10-23 20:34:16 info: server ready on port 8080
+2024-10-23 20:34:17 info: MongoDB conectado
+2024-10-23 20:34:26 error: Cast to ObjectId failed for value "akjshdaksjhdahjsd" (type string) at path "_id" for model "products"
+2024-10-23 20:34:35 info: server ready on port 8080
+2024-10-23 20:34:36 info: MongoDB conectado
+2024-10-23 20:34:57 info: server ready on port 8080
+2024-10-23 20:34:57 info: MongoDB conectado
+2024-10-23 20:37:16 info: server ready on port 8080
+2024-10-23 20:37:16 info: MongoDB conectado
+2024-10-23 20:39:06 info: server ready on port 8080
+2024-10-23 20:39:07 info: MongoDB conectado
+2024-10-23 20:39:43 info: server ready on port 8080
+2024-10-23 20:39:47 info: MongoDB conectado
+2024-10-23 20:40:29 info: server ready on port 8080
+2024-10-23 20:40:30 info: MongoDB conectado
+2024-10-23 20:42:13 info: server ready on port 8080
+2024-10-23 20:42:14 info: MongoDB conectado
+2024-10-23 20:43:03 info: server ready on port 8080
+2024-10-23 20:43:06 info: MongoDB conectado
+2024-10-23 20:43:33 error: Cast to ObjectId failed for value "66491a46c5cb5d48444da4" (type string) at path "_id" for model "products"
+2024-10-23 20:47:46 info: server ready on port 8080
+2024-10-23 20:47:47 info: MongoDB conectado
+2024-10-24 21:57:16 info: server ready on port 8080
+2024-10-24 21:57:17 info: MongoDB conectado
+2024-10-24 21:59:37 info: server ready on port 8080
+2024-10-24 21:59:38 info: MongoDB conectado
+2024-10-24 22:00:11 info: server ready on port 8080
+2024-10-24 22:00:14 info: MongoDB conectado
+2024-10-24 22:00:52 info: server ready on port 8080
+2024-10-24 22:00:53 info: MongoDB conectado
+2024-10-24 22:02:33 info: server ready on port 8080
+2024-10-24 22:02:34 info: MongoDB conectado
+2024-10-24 22:07:02 info: server ready on port 8080
+2024-10-24 22:07:03 info: MongoDB conectado
+2024-10-24 22:10:06 info: server ready on port 8080
+2024-10-24 22:10:07 info: MongoDB conectado
+2024-10-24 22:13:25 info: server ready on port 8080
+2024-10-24 22:13:26 info: MongoDB conectado
+2024-10-24 22:14:15 info: server ready on port 8080
+2024-10-24 22:14:17 info: MongoDB conectado
+2024-10-24 22:15:53 info: server ready on port 8080
+2024-10-24 22:15:54 info: MongoDB conectado
+2024-10-24 22:16:43 info: server ready on port 8080
+2024-10-24 22:16:44 info: MongoDB conectado
+2024-10-24 22:17:36 info: server ready on port 8080
+2024-10-24 22:17:38 info: MongoDB conectado
+2024-10-24 22:18:32 info: server ready on port 8080
+2024-10-24 22:18:33 info: MongoDB conectado
+2024-10-24 22:18:57 info: server ready on port 8080
+2024-10-24 22:19:01 info: MongoDB conectado
+2024-10-24 22:20:29 info: server ready on port 8080
+2024-10-24 22:20:30 info: MongoDB conectado
+2024-10-24 22:32:37 info: server ready on port 8080
+2024-10-24 22:32:39 info: MongoDB conectado
+2024-10-25 13:10:52 info: server ready on port 8080
+2024-10-25 13:10:53 info: MongoDB conectado
+2024-10-25 13:11:10 info: server ready on port 8080
+2024-10-25 13:11:10 info: MongoDB conectado
+2024-10-25 13:13:20 info: server ready on port 8080
+2024-10-25 13:13:21 info: MongoDB conectado
+2024-10-25 13:15:55 info: server ready on port 8080
+2024-10-25 13:15:55 info: MongoDB conectado
+2024-10-25 13:24:07 info: server ready on port 8080
+2024-10-25 13:24:09 info: MongoDB conectado
+2024-10-25 13:27:18 info: server ready on port 8080
+2024-10-25 13:27:19 info: MongoDB conectado
+2024-10-25 13:29:32 info: server ready on port 8080
+2024-10-25 13:29:33 info: MongoDB conectado
+2024-10-25 13:29:58 info: server ready on port 8080
+2024-10-25 13:30:00 info: MongoDB conectado
+2024-10-25 13:30:09 info: server ready on port 8080
+2024-10-25 13:30:11 info: MongoDB conectado
+2024-10-25 13:33:26 info: server ready on port 8080
+2024-10-25 13:33:27 info: MongoDB conectado
+2024-10-25 13:33:39 info: server ready on port 8080
+2024-10-25 13:33:40 info: MongoDB conectado
+2024-10-25 13:34:32 info: server ready on port 8080
+2024-10-25 13:34:33 info: MongoDB conectado

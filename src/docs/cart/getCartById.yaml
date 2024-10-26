@@ -1,0 +1,58 @@
+paths:
+  /api/cart/{cid}:
+    get:  
+      tags:
+        - Cart
+      summary: Get cart by id
+      parameters:
+        - name: pid
+          in: path
+          description: id del carrito
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El carrito fue obtenido sin problemas.
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/CartById"
+        "404":
+          description: Carrito no encontrado
+        "500":
+          description: Internal server error.
+
+components:
+  schemas:
+    CartById:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+        title:
+          type: string
+        description:
+          type: string
+        thumbnail:
+          type: array
+        code:
+          type: string
+        stock:
+          type: integer
+        status:
+          type: boolean
+        price:
+          type: integer
+        category:
+          type: string
+        owner:
+          type: string
+      example:
+        _id: "66491a46c5cb5d48444da4d6"
+        title: "producto 1"
+        description: "descripcion de carrito 1"
+        thumnail: ["www.testeo.com"]
+        code: "123AB78"
+        price: 50.2
+        category: "autos"

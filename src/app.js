@@ -10,6 +10,8 @@ import cookieParser from "cookie-parser";
 import envs from './config/env.config.js';
 import { errorHandle } from "./errors/errorHandle.js";
 import { logger } from "./utils/logger.js";
+import swaggerUiExpress from "swagger-ui-express";
+import { specs } from "./config/swagger.config.js";
 
 //conexion con la base de datos
 connectMongoDB();
@@ -38,6 +40,8 @@ initializePassport();
 app.engine("handlebars", handlebars.engine());
 app.set("views", "./src/views");
 app.set("view engine", "handlebars");
+
+app.use("/api-docs", swaggerUiExpress.serve, swaggerUiExpress.setup(specs))
 
 app.use("/api", routes)
 
