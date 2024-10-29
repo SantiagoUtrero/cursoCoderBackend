@@ -18,12 +18,10 @@ const getByEmail = async (email) => {
   }
 
 
-
 const create = async (data) => {
     const user = await userModel.create(data);
     return user;
 }
-
 
 
 const update = async (id, data) => {

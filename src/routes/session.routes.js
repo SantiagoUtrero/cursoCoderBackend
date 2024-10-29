@@ -5,6 +5,8 @@ import { authorization, passportCall } from "../middleware/passport.middleware.j
 import { sendMail } from "../utils/sendMails.js";
 import { sendSMS } from "../utils/sendSms.js";
 import { generateUserMocks } from "../mocks/user.mock.js";
+import { upload } from "../utils/uploadFiles.js";
+import userController from "../controllers/user.controller.js";
 
 
 const router = Router();
@@ -51,4 +53,14 @@ router.get("/usermocks", async (req, res) => {
   res.status(200).json({status: "ok", users})
 })
 
+//upload multer
+router.post ("/:uid/documents",
+   passportCall("jwt"), 
+   authorization("user", "admin"), 
+   upload.fields([
+    { name: "profile", maxCount: 1},
+    {name: "productImg", maxCount: 1},
+    {name: "documents", maxCount: 3}
+      ]), userController.addDocuments
+);
 export default router;
