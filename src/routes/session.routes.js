@@ -3,7 +3,6 @@ import passport from "passport";
 import sessionsController from "../controllers/sessions.controller.js";
 import { authorization, passportCall } from "../middleware/passport.middleware.js";
 import { sendMail } from "../utils/sendMails.js";
-import { sendSMS } from "../utils/sendSms.js";
 import { generateUserMocks } from "../mocks/user.mock.js";
 import { upload } from "../utils/uploadFiles.js";
 import userController from "../controllers/user.controller.js";
@@ -27,11 +26,6 @@ router.get("/google", passport.authenticate("google", {
 router.get("/logout", sessionsController.logout)
 
 //despues crear los endpoints correspondientes
-router.get("/sms", async (req, res) => {
-  await sendSMS("+542615113676", "Hola buenas, mensaje de prueba!!")
-
-  res.status(200).json({status: "ok", msg: "sms enviado con exito"})
-})
 
 router.get("/email", async (req,res) => {
 
