@@ -10,5 +10,6 @@ router.use("/products", productsRoutes);
 router.use("/carts", cartRoutes);
 router.use("/views", viewsRoutes);
 router.use ("/sessions", sessionRoutes)
+//router.use("/payment", paymentRoutes)
 
 export default router;

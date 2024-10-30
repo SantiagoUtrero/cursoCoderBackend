@@ -28,6 +28,11 @@ const addProductToCart = async (cid, pid) => {
     
 }
 
+const updateCart = async (cid, products) => {
+    const cart = await cartModel.findByIdAndUpdate(cid, { $set: { products } }, { new: true });
+    return cart;
+  };
+
 const deleteProductInCart = async (cid, pid) => {
     const cart = await cartModel.findOneAndUpdate({ _id: cid, "products.product": pid}, { $inc: { "products.$.quantity": -1}, new: true});
     return cart;
@@ -37,5 +42,6 @@ export default {
     deleteProductInCart,
     addProductToCart,
     create,
-    getById
+    getById,
+    updateCart
 }
