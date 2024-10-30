@@ -14,14 +14,14 @@ const createCart = async (req,res,next) => {
     }
 }
 
-const addProductToCart = async (req, res, next) => { // Add next as a parameter
+const addProductToCart = async (req, res, next) => { 
     try {
         const { cid, pid } = req.params;
         const cart = await cartsServices.addProductToCart(cid, pid, req.user);
         
         res.status(200).json({ status: "success", payload: cart });
     } catch (error) {
-        next(error); // Pass the error to the next middleware
+        next(error); 
     }
 };
 
