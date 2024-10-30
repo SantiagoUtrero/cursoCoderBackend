@@ -6,8 +6,8 @@ const createCart = async (req,res) => {
 }
 const addProductToCart = async (cid, pid) => {
 
- const cart = await cartsRepository.addProductToCart(cid, pid);
- return cart;
+    const product = await productsRepository.getById(pid);
+    return await cartsRepository.addProductToCart(cid, pid);
     
 }
 const getById = async (id) => {

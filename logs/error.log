@@ -8,3 +8,4 @@
 2024-10-23 20:34:26 error: Cast to ObjectId failed for value "akjshdaksjhdahjsd" (type string) at path "_id" for model "products"
 2024-10-23 20:43:33 error: Cast to ObjectId failed for value "66491a46c5cb5d48444da4" (type string) at path "_id" for model "products"
 2024-10-28 12:47:34 error: querySrv ETIMEOUT _mongodb._tcp.e-commerce1.hwuxqrg.mongodb.net
+2024-10-30 19:38:54 error: user is not defined

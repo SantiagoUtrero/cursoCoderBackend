@@ -1,4 +1,5 @@
 import { cartModel } from "../mongo/models/cart.model.js";
+import { checkProductsAndCart } from "../../middleware/checkProductAndCart.middleware.js";
 
 
 const getById = async (id) =>{
@@ -12,22 +13,19 @@ const create = async (data) =>{
 }
 
 const addProductToCart = async (cid, pid) => {
-
-    await checkProductsAndCart(cid,pid);
-
-    const productInCart = cart.products.find(p => p.product.toString() === pid);
-    if (productInCart) {
-        productInCart.quantity += 1;
-    } else {
-        cart.products.push({ product: pid, quantity: 1 });
-    }
-
-    await cart.save();
-
-    return { product: true, cart: cart };
     
-}
-
+    const productInCart = await cartModel.findOneAndUpdate(
+        { _id: cid, "products.product": pid },
+        { $inc: { "products.$.quantity": 1 } },
+        { new: true }
+      );
+    
+      if (!productInCart) {
+        return await cartModel.findOneAndUpdate({ _id: cid }, { $push: { products: { product: pid, quantity: 1 } } }, { new: true });
+      }
+    
+      return productInCart;
+};
 const updateCart = async (cid, products) => {
     const cart = await cartModel.findByIdAndUpdate(cid, { $set: { products } }, { new: true });
     return cart;
